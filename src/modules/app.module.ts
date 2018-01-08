@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AuthModule } from './auth/auth.module';
+import { BrokerProviders } from './common/index';
 
 @Module({
-  modules: [
-    AuthModule,
-  ],
+  modules: [],
+  components: [...BrokerProviders],
+  exports: [...BrokerProviders],
 })
 export class ApplicationModule {}

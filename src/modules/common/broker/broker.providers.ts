@@ -1,4 +1,5 @@
 import { ServiceBroker, Transporters } from 'moleculer';
+import * as path from 'path'
 
 const NatsTransporter = Transporters.NATS;
 
@@ -12,8 +13,6 @@ export const BrokerProviders = [
         transporter: new NatsTransporter(),
         logger: console,
       });
-      await broker.start();
-
       return broker;
     },
   },

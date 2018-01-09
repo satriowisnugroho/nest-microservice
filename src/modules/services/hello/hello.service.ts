@@ -1,7 +1,6 @@
 import { Inject } from '@nestjs/common';
 
 export class HelloService {
-  
   private name: string = 'test';
   private service: object;
 
@@ -9,19 +8,19 @@ export class HelloService {
     this.initService();
     this.broker.createService(this.service);
   }
-  
+
   initService() {
     this.service = {
       name: this.name,
-      actions: this.actions()
-    }
+      actions: this.actions(),
+    };
   }
 
   actions() {
-      return {
-        world(ctx) {
-            return `hello world, ${ctx.params.a}`;
-        }
-      }
+    return {
+      world(ctx) {
+        return `hello world, ${ctx.params.a}`;
+      },
+    };
   }
 }

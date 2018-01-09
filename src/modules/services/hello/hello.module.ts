@@ -4,7 +4,7 @@ import { HelloService } from './hello.service';
 
 @Module({
   imports: [BrokerModule],
-  components: [HelloService]
+  components: [HelloService],
 })
 
 export class HelloModule {}

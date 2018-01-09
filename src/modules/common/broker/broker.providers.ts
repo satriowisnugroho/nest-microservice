@@ -1,5 +1,4 @@
 import { ServiceBroker, Transporters } from 'moleculer';
-import * as path from 'path'
 
 const NatsTransporter = Transporters.NATS;
 

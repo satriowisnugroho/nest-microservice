@@ -8,6 +8,6 @@ import { HelloModule } from './services/hello/hello.module';
 
 export class ApplicationModule {
   constructor(@Inject('Broker') private readonly broker) {
-    this.broker.repl();
+    this.broker.start().then(() => this.broker.repl());
   }
 }

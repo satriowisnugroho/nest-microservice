@@ -22,7 +22,7 @@ export class UserService {
 
   actions(userRepository) {
     return {
-      async list(ctx) {
+      async list() {
         return await userRepository.findAll();
       },
     };

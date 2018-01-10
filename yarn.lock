@@ -288,6 +288,10 @@ atob@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.0.3.tgz#19c7a760473774468f20b2d2d03372ad7d4cbf5d"
 
+avsc@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/avsc/-/avsc-5.1.2.tgz#4790a3041d1f0b53435ac0474631e9a95d96ebee"
+
 aws-sign2@~0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.6.0.tgz#14342dd38dbcc94d0e5b87d763cd63612c0e794f"

@@ -1,9 +1,9 @@
 import { Module, Inject } from '@nestjs/common';
 import { BrokerModule } from './common/index';
-import { HelloModule } from './services/hello/hello.module';
+import { UserModule } from './user/user.module';
 
 @Module({
-  modules: [BrokerModule, HelloModule],
+  modules: [BrokerModule, UserModule],
 })
 
 export class ApplicationModule {

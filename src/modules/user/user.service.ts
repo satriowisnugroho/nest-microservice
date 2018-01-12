@@ -25,6 +25,29 @@ export class UserService {
       async list() {
         return await userRepository.findAll();
       },
+      async destroy(ctx) {
+        const amqp = require('amqplib/callback_api');
+
+        amqp.connect('amqp://localhost:32769', (err, conn) => {
+          if (conn) {
+            conn.createChannel((err2, ch) => {
+              const q = 'delete_user';
+              const object = { user_id: ctx.params.id };
+
+              try {
+                if (ch) {
+                  ch.assertQueue(q, { durable: true });
+                  ch.sendToQueue(q, new Buffer(JSON.stringify(object)), { persistent: true });
+                }
+              } catch (e) {
+                console.log('Queue', e);
+              }
+            });
+          }
+        });
+
+        return 'sending to queue';
+      },
     };
   }
 }

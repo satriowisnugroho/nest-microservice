@@ -4,28 +4,30 @@ import User from './user.entity';
 export class UserService {
   private name: string = 'user';
   private service: object;
+  private user: typeof User;
 
   constructor(
     @Inject('Broker') private readonly broker,
     @Inject('UserRepository') private readonly userRepository: typeof User,
   ) {
-    this.initService(this.userRepository);
+    this.initService();
+    this.user = this.userRepository;
     this.broker.createService(this.service);
   }
 
-  initService(userRepository) {
+  initService() {
     this.service = {
       name: this.name,
-      actions: this.actions(userRepository),
+      actions: this.actions(),
     };
   }
 
-  actions(userRepository) {
+  actions() {
     return {
-      async list() {
-        return await userRepository.findAll();
+      list: async () => {
+        return await this.user.findAll();
       },
-      async destroy(ctx) {
+      destroy: async (ctx) => {
         const amqp = require('amqplib/callback_api');
 
         amqp.connect('amqp://localhost:32769', (err, conn) => {

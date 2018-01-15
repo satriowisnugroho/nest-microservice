@@ -25,14 +25,11 @@ export class UserService {
     return {
       list: async () => {
         const users = await this.userRepository.findAll();
-        let data = [];
-        users.map(user => {
-          data.push({
-            id: user.id,
-            name: user.name
-          })
-        })
-        return data;
+
+        return users.map(user => ({
+          id: user.id,
+          name: user.name,
+        }));
       },
       destroy: async (ctx) => {
         const worker = this.worker;

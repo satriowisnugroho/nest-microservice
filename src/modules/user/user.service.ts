@@ -4,7 +4,6 @@ import User from './user.entity';
 export class UserService {
   private name: string = 'user';
   private service: object;
-  private user: typeof User;
 
   constructor(
     @Inject('Broker') private readonly broker: any,
@@ -12,7 +11,6 @@ export class UserService {
     @Inject('UserRepository') private readonly userRepository: typeof User,
   ) {
     this.initService();
-    this.user = this.userRepository;
     this.broker.createService(this.service);
   }
 
@@ -26,7 +24,7 @@ export class UserService {
   actions() {
     return {
       list: async () => {
-        return await this.user.findAll();
+        return await this.userRepository.findAll();
       },
       destroy: async (ctx) => {
         const worker = this.worker;
@@ -43,7 +41,7 @@ export class UserService {
         return 'sending to queue';
       },
       worker_destroy: async (ctx) => {
-        await this.user.destroy({
+        await this.userRepository.destroy({
           where: { id: ctx.params.id },
         });
 

@@ -4,7 +4,7 @@ export const WorkerProviders = [
   {
     provide: 'Worker',
     useFactory: async () => {
-      return amqp.connect('amqp://localhost:5672').then((conn) => conn.createChannel());
+      return amqp.connect(process.env.RABBITMQ_HOST).then((conn) => conn.createChannel());
     },
   },
 ];

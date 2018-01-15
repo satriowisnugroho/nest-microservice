@@ -8,7 +8,7 @@ export const BrokerProviders = [
     useFactory: async () => {
       return new ServiceBroker({
         namespace: 'kioson',
-        nodeID: process.argv[2] || `Microservice server-${process.pid}`,
+        nodeID: process.argv[2] || `ms-server-${process.pid}`,
         transporter: new NatsTransporter(),
         logger: console,
         serializer: 'Avro',

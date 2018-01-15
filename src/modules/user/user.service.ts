@@ -26,7 +26,15 @@ export class UserService {
   actions() {
     return {
       list: async () => {
-        return await this.user.findAll();
+        const users = await this.user.findAll();
+        let data = [];
+        users.map(user => {
+          data.push({
+            id: user.id,
+            name: user.name
+          })
+        })
+        return data;
       },
       destroy: async (ctx) => {
         const worker = this.worker;
@@ -46,7 +54,6 @@ export class UserService {
         await this.user.destroy({
           where: { id: ctx.params.id },
         });
-
         return 'deleting user';
       },
     };

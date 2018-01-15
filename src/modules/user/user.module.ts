@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { BrokerModule } from '../common/index';
+import { BrokerModule, WorkerModule } from '../common/index';
 import { UserService } from './user.service';
 import { userProviders } from './user.providers';
 import { DatabaseModule } from '../database/database.module';
 
 @Module({
-  imports: [BrokerModule, DatabaseModule],
+  imports: [BrokerModule, DatabaseModule, WorkerModule],
   components: [UserService, userProviders],
 })
 

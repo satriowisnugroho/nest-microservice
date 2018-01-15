@@ -43,9 +43,11 @@ export class UserService {
         return 'sending to queue';
       },
       worker_destroy: async (ctx) => {
-        return await this.user.destroy({
+        await this.user.destroy({
           where: { id: ctx.params.id },
         });
+
+        return 'deleting user';
       },
     };
   }

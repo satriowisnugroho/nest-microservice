@@ -27,4 +27,7 @@ export default class User extends Model<User> {
 
   @Column
   public email: string;
+
+  @Column
+  public username: string;
 }

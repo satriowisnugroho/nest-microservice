@@ -21,7 +21,7 @@ export const matchParams = (data: any, params: any, isStrict: boolean = true): a
 
 export const parseDate = (date: string): number => moment(date).unix();
 
-export const parseUnixToDate = (value: number): string => moment.unix(value).format("MM/DD/YYYY");;
+export const parseUnixToDate = (value: number): string => moment.unix(value).format("MM/DD/YYYY");
 
 export const metaPagination = (query: any): any => ({
   meta: {

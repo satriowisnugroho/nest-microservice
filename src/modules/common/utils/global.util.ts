@@ -23,8 +23,9 @@ export const parseDate = (date: string): number => moment(date).unix();
 
 export const metaPagination = (query: any): any => ({
   meta: {
-    page: Number(query.page),
     limit: Number(query.limit),
+    offset: Number(query.offset),
+    total: Number(query.total),
   },
 });
 
